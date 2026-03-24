@@ -1,0 +1,120 @@
+:root {
+    --getizy-text: #7F7D86;
+    --getizy-text-rgb: 127, 125, 134;
+    --getizy-base: #D33D35;
+    --getizy-base-two: #FB8459;
+    --getizy-base-rgb: 211, 61, 53;
+    --getizy-base-rgb-two: 251, 132, 89;
+    --getizy-secondary: #222230;
+    --getizy-gray: #F4F5F8;
+    --getizy-secondary-rgb: 34, 34, 48;
+    --getizy-white: #FFFFFF;
+    --getizy-white-rgb: 255, 255, 255;
+    --getizy-netural: #FFEEEA;
+    --getizy-netural-rgb: 255, 238, 234;
+    --getizy-black: #10101C;
+    --getizy-black-rgb: 16, 16, 28;
+    --getizy-black2: #000000;
+    --getizy-black2-rgb: 0, 0, 0;
+    --getizy-border-color-rgb: 235, 227, 217;
+
+}
+
+.home-showcase__inner,
+.demo-one__card,
+.main-menu .main-menu__list li ul {
+    background-color: var(--getizy-secondary);
+
+}
+
+.demo-one__title,
+.hero-slider-one__title,
+.sec-title__title,
+.countbar-one__text,
+.service-one__card__title,
+.service-one__card:hover .service-one__card__icon span,
+.sec-title__tagline span,
+.why-choose-one__card__title {
+    color: var(--getizy-white);
+}
+
+.main-menu .main-menu__list li ul li.current>a,
+.main-menu .main-menu__list li ul li:hover>a,
+.hero-video,
+.features-one__card__hover__btn,
+.countbar-one__shape__one::after,
+.countbar-one__shape__two::after {
+    background: var(--getizy-white);
+}
+
+.why-choose-one {
+    z-index: 1;
+}
+
+.main-menu .main-menu__list li ul li.current>a,
+.main-menu .main-menu__list li ul li:hover>a,
+.main-menu .main-menu__list li ul li>a::after,
+.hero-video span,
+.features-one__card__hover__btn span,
+.service-one__card__icon span,
+.service-one__card:hover .service-one__card__title {
+    color: var(--getizy-secondary);
+}
+
+.getizy-btn:hover {
+    background: var(--getizy-white);
+    color: var(--getizy-secondary);
+}
+
+.btn-hover-cropping::after,
+.service-one__card__icon,
+.service-one__card:hover,
+.why-choose-one__card__single::after {
+    background-color: var(--getizy-white);
+
+}
+
+.features-one,
+.service-one,
+.testimonials-one,
+.why-choose-one,
+.team-one,
+.blog-one {
+    background-color: var(--getizy-black);
+}
+
+.team-one,
+.service-one {
+    z-index: 0;
+}
+
+.features-one__item:hover .features-one__card__top__wrap,
+.features-one__card__hover__active .features-one__card__top__wrap,
+.service-one__card__btn,
+.client-carousel__inner::after,
+.testimonials-one__inner::after {
+    border-color: var(--getizy-white);
+
+}
+
+.features-one__item:hover .features-one__card__bottom__wrap,
+.features-one__card__hover__active .features-one__card__bottom__wrap,
+.countbar-one__wrap,
+.service-one__content__eliment__logo {
+    border-color: var(--getizy-white);
+
+}
+
+.service-one__card:hover .service-one__card__btn {
+    border-color: var(--getizy-secondary);
+}
+
+.features-one__item:hover .features-one__card__top__wrap,
+.features-one__card__hover__active .features-one__card__top__wrap,
+.features-one__card__bottom__wrap,
+.service-one__card,
+.why-choose-one__card__single,
+.team-one__bg__overlay {
+    background-color: var(--getizy-secondary);
+}
+
