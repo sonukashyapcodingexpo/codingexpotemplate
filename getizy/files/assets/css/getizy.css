@@ -17,10 +17,14 @@
   --getizy-font: "Plus Jakarta Sans", sans-serif;
   --getizy-text: #7F7D86;
   --getizy-text-rgb: 127, 125, 134;
-  --getizy-base: #D33D35;
-  --getizy-base-two: #FB8459;
-  --getizy-base-rgb: 211, 61, 53;
-  --getizy-base-rgb-two: 251, 132, 89;
+  /* primary brand colors: light blue + warm orange (screenshot-style) */
+  --getizy-base: #0ea5e9;
+  --getizy-base-two: #ff914d;
+  --getizy-base-rgb: 14, 165, 233;
+  --getizy-base-rgb-two: 255, 145, 77;
+  /* solid section fills */
+  --codingexpo-solid-blue: #bae6fd;
+  --codingexpo-solid-orange: #ff914d;
   --getizy-secondary: #222230;
   --getizy-gray: #F4F5F8;
   --getizy-secondary-rgb: 34, 34, 48;
@@ -19646,5 +19650,77 @@ body.boxed-wrapper .project-one__custome-navs {
 
 
 
+
+/*--------------------------------------------------------------
+# Coding Expo — solid light blue / solid orange sections
+--------------------------------------------------------------*/
+.section-bg-solid-blue {
+  background-color: var(--codingexpo-solid-blue) !important;
+  background-image: none !important;
+}
+
+.section-bg-solid-blue .body-shape-one,
+.section-bg-solid-blue .body-shape-two,
+.section-bg-solid-blue .service-one__shapes,
+.section-bg-solid-blue .why-choose-one__shapes {
+  opacity: 0.12;
+}
+
+.section-bg-solid-blue .sec-title__title,
+.section-bg-solid-blue .features-one__card__title,
+.section-bg-solid-blue .service-one__card__title,
+.section-bg-solid-blue .testimonials-one__carousel__item__content__author__name,
+.section-bg-solid-blue .project-one__card__title,
+.section-bg-solid-blue .team-one__card__title,
+.section-bg-solid-blue .blog-card__title a {
+  color: #0c4a6e !important;
+}
+
+.section-bg-solid-blue .sec-title__tagline,
+.section-bg-solid-blue .features-one__card__desc,
+.section-bg-solid-blue .service-one__card__desc,
+.section-bg-solid-blue p,
+.section-bg-solid-blue .service-one__desc {
+  color: #334155 !important;
+}
+
+.section-bg-solid-orange {
+  background-color: var(--codingexpo-solid-orange) !important;
+  background-image: none !important;
+}
+
+.section-bg-solid-orange .body-shape-one,
+.section-bg-solid-orange .body-shape-two,
+.section-bg-solid-orange .service-one__shapes {
+  opacity: 0.08;
+}
+
+.section-bg-solid-orange .sec-title__title,
+.section-bg-solid-orange .features-one__card__title,
+.section-bg-solid-orange .service-one__card__title,
+.section-bg-solid-orange .why-choose-one__card__title,
+.section-bg-solid-orange .project-one__card__title,
+.section-bg-solid-orange .team-one__card__title,
+.section-bg-solid-orange .blog-card__title a {
+  color: #ffffff !important;
+}
+
+.section-bg-solid-orange .sec-title__tagline,
+.section-bg-solid-orange .features-one__card__desc,
+.section-bg-solid-orange .service-one__card__desc,
+.section-bg-solid-orange p,
+.section-bg-solid-orange .service-one__desc,
+.section-bg-solid-orange .why-choose-one__card__text {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.section-bg-solid-orange .getizy-btn.btn-hover-cropping {
+  background: #ffffff !important;
+  color: #c2410c !important;
+}
+
+.section-bg-solid-orange .getizy-btn.btn-hover-cropping:hover {
+  color: #0c4a6e !important;
+}
 
 /*# sourceMappingURL=getizy.css.map */
