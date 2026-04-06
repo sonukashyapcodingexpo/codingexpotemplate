@@ -1427,6 +1427,51 @@ body {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+
+  #about.about-three .about-three__support-row {
+    margin-top: 14px;
+  }
+
+  #about.about-three .about-three__support-row .col-lg-8 {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #about.about-three .about-three__list,
+  #about.about-three .about-three__infu {
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px 12px;
+  }
+
+  #about.about-three .about-three__list ul {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  #about.about-three .about-three__list ul li {
+    font-size: 0.96rem;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  #about.about-three .about-three__infu {
+    text-align: center;
+  }
+
+  #about.about-three .about-three__infu__icon {
+    margin: 0 auto 8px;
+  }
+
+  #about.about-three .about-three__infu__text {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  #about.about-three .about-three__infu__number {
+    line-height: 1.35;
+    font-size: 1rem;
+  }
 }
 
 /* Services section redesign: modern, clean, same palette */
