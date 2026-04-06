@@ -75,7 +75,8 @@
 }
 
 .codingexpo-logo--about-badge {
-  max-height: 40px;
+  max-height: 80px;
+  width: auto;
 }
 
 .codingexpo-logo--inline {
@@ -926,15 +927,13 @@ body {
 }
 
 #home.hero-slider-three .hero-slider__content {
-  max-width: min(700px, 92%);
-  padding: clamp(20px, 3vw, 34px);
-  border-radius: 20px;
-  background: linear-gradient(140deg, rgba(10, 32, 54, 0.74) 0%, rgba(15, 55, 90, 0.58) 100%);
-  border: 1px solid rgba(142, 205, 255, 0.34);
-  backdrop-filter: blur(6px);
-  box-shadow:
-    0 10px 26px rgba(11, 27, 45, 0.28),
-    0 24px 64px rgba(11, 27, 45, 0.22);
+  max-width: min(1200px, 96%);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  box-shadow: none;
   position: relative;
   z-index: 4;
 }
@@ -973,6 +972,84 @@ body {
   margin-top: 18px;
 }
 
+#home.hero-slider-three .codingexpo-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+  gap: 22px;
+  align-items: center;
+}
+
+#home.hero-slider-three .codingexpo-hero-layout__left {
+  background: linear-gradient(140deg, rgba(10, 32, 54, 0.74) 0%, rgba(15, 55, 90, 0.58) 100%);
+  border: 1px solid rgba(142, 205, 255, 0.34);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 10px 26px rgba(11, 27, 45, 0.28),
+    0 24px 64px rgba(11, 27, 45, 0.22);
+  padding: clamp(20px, 3vw, 34px);
+}
+
+#home.hero-slider-three .codingexpo-hero-layout__right {
+  width: 100%;
+}
+
+#home.hero-slider-three .codingexpo-hero-form {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(241, 248, 255, 0.95));
+  border: 1px solid rgba(137, 192, 238, 0.42);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 14px 34px rgba(10, 32, 54, 0.22);
+}
+
+#home.hero-slider-three .codingexpo-hero-form__title {
+  margin: 0 0 12px;
+  color: #17324f;
+  font-size: 1.28rem;
+  font-weight: 800;
+}
+
+/* Remove animated overlay strips from hero title */
+#home.hero-slider-three .hero-slider-three__title__overlay {
+  display: none !important;
+}
+
+#home.hero-slider-three .codingexpo-hero-form__grid {
+  display: grid;
+  gap: 10px;
+}
+
+#home.hero-slider-three .codingexpo-hero-form input,
+#home.hero-slider-three .codingexpo-hero-form select {
+  width: 100%;
+  height: 46px;
+  border-radius: 11px;
+  border: 1px solid rgba(137, 192, 238, 0.58);
+  background: #fff;
+  color: #17324f;
+  font-size: 15px;
+  padding: 10px 13px;
+  outline: none;
+}
+
+#home.hero-slider-three .codingexpo-hero-form input:focus,
+#home.hero-slider-three .codingexpo-hero-form select:focus {
+  border-color: #35a3ff;
+  box-shadow: 0 0 0 3px rgba(53, 163, 255, 0.16);
+}
+
+#home.hero-slider-three .codingexpo-hero-form__submit {
+  margin-top: 12px;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(90deg, #ff9f58 0%, #ff7a2f 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
 #home.hero-slider-three .hero-slider-three__btn .getizy-btn {
   background: linear-gradient(90deg, #ff9f58 0%, #ff7a2f 100%) !important;
   border: 0 !important;
@@ -1005,7 +1082,12 @@ body {
 
 @media (max-width: 1199px) {
   #home.hero-slider-three .hero-slider__content {
-    max-width: min(650px, 95%);
+    max-width: min(1080px, 96%);
+  }
+
+  #home.hero-slider-three .codingexpo-hero-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 390px);
+    gap: 16px;
   }
 }
 
@@ -1015,12 +1097,17 @@ body {
   }
 
   #home.hero-slider-three .hero-slider__content {
-    padding: 18px;
-    border-radius: 16px;
+    padding: 0;
+    border-radius: 0;
   }
 
   #home.hero-slider-three .hero-slider-three__desc {
     max-width: 100%;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
 }
@@ -1038,9 +1125,14 @@ body {
     max-width: calc(100% - 16px);
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-layout__left {
     padding: 14px 14px 16px;
     border-radius: 14px;
-    backdrop-filter: none;
   }
 
   #home.hero-slider-three .hero-slider-three__title,
@@ -1057,6 +1149,237 @@ body {
   #home.hero-slider-three .hero-slider-three__btn .getizy-btn {
     padding: 10px 16px !important;
     font-size: 13px !important;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-form {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-form__title {
+    font-size: 1.08rem;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-form input,
+  #home.hero-slider-three .codingexpo-hero-form select,
+  #home.hero-slider-three .codingexpo-hero-form__submit {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* Enquiry popup (opens on every page refresh/load) */
+.codingexpo-enquiry-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+}
+
+.codingexpo-enquiry-popup.is-open {
+  display: block;
+}
+
+.codingexpo-enquiry-popup__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 20, 36, 0.62);
+}
+
+.codingexpo-enquiry-popup__dialog {
+  position: relative;
+  width: 70vw;
+  max-width: 860px;
+  margin: min(10vh, 72px) auto 0;
+  z-index: 1;
+}
+
+.codingexpo-enquiry-popup__close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 0;
+  background: #17324f;
+  color: #fff;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.codingexpo-hero-form--popup {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(241, 248, 255, 0.96));
+  border: 1px solid rgba(137, 192, 238, 0.46);
+  border-radius: 16px;
+  padding: 22px !important;
+  box-shadow: 0 16px 38px rgba(10, 32, 54, 0.24);
+}
+
+.codingexpo-hero-form--popup .codingexpo-hero-form__title {
+  margin: 0 0 12px;
+  color: #17324f;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 800;
+}
+
+.codingexpo-hero-form--popup .codingexpo-hero-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.codingexpo-hero-form--popup .codingexpo-hero-form__grid input,
+.codingexpo-hero-form--popup .codingexpo-hero-form__grid select {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid rgba(137, 192, 238, 0.6);
+  background: #ffffff;
+  color: #17324f;
+  font-size: 15px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.codingexpo-hero-form--popup .codingexpo-hero-form__grid input:focus,
+.codingexpo-hero-form--popup .codingexpo-hero-form__grid select:focus {
+  border-color: #35a3ff;
+  box-shadow: 0 0 0 3px rgba(53, 163, 255, 0.16);
+}
+
+.codingexpo-hero-form--popup .codingexpo-hero-form__submit {
+  margin-top: 12px;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff9f58 0%, #ff7a2f 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Inline enquiry form under Why Choose Us */
+.codingexpo-enquiry-inline {
+  padding: 12px 0 44px;
+}
+
+.codingexpo-enquiry-inline__inner {
+  width: 80vw;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Contact strip between About and Services */
+.codingexpo-contact-strip {
+  position: relative;
+  margin: 6px 0 24px;
+}
+
+.codingexpo-contact-strip .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.codingexpo-contact-strip__inner {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(149, 193, 235, 0.42);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  display: grid;
+  grid-template-columns: 30% 35% 30%;
+  column-gap: 3%;
+  overflow: visible;
+}
+
+.codingexpo-contact-strip__item {
+  min-height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  color: #17324f;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid rgba(149, 193, 235, 0.35);
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.codingexpo-contact-strip__item:last-child {
+  border-right: 1px solid rgba(149, 193, 235, 0.35);
+}
+
+.codingexpo-contact-strip__item i {
+  color: #1d8fe1;
+  font-size: 18px;
+}
+
+.codingexpo-contact-strip__item:hover {
+  color: #17324f;
+}
+
+@media (max-width: 767px) {
+  .codingexpo-contact-strip {
+    display: none !important;
+  }
+
+  .codingexpo-enquiry-popup__dialog {
+    width: 70vw;
+    min-width: 300px;
+    margin-top: 52px;
+  }
+
+  .codingexpo-hero-form--popup {
+    padding: 16px !important;
+  }
+
+  .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .codingexpo-enquiry-inline {
+    padding: 10px 0 30px;
+  }
+
+  .codingexpo-enquiry-inline__inner {
+    width: 80vw;
+  }
+
+  .codingexpo-contact-strip {
+    margin: 8px 0 16px;
+  }
+
+  .codingexpo-contact-strip__inner {
+    grid-template-columns: 30% 35% 30%;
+    column-gap: 3%;
+    width: 100%;
+  }
+
+  .codingexpo-contact-strip__item {
+    min-height: 44px;
+    font-size: 11px;
+    justify-content: center;
+    border-right: 1px solid rgba(149, 193, 235, 0.35);
+    border-bottom: 1px solid rgba(149, 193, 235, 0.35);
+    padding: 6px 4px;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .codingexpo-contact-strip__item:last-child {
+    border-bottom: 1px solid rgba(149, 193, 235, 0.35);
+  }
+
+  .codingexpo-contact-strip__item i {
+    font-size: 12px;
   }
 }
 
@@ -1243,8 +1566,8 @@ body {
   left: 18px;
   bottom: 18px;
   border-radius: 12px;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 16px;
+  background: #ffffff;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
 }
 
@@ -2613,41 +2936,43 @@ body {
 }
 
 .codingexpo-fixed-footerbar__inner {
-  min-height: 74px;
-  display: flex;
+  min-height: 112px;
+  display: block;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  padding: 10px 0;
+  gap: 0;
+  padding: 14px 0;
 }
 
 .codingexpo-fixed-footerbar__copy {
-  margin: 0;
-  color: #111111;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.4;
+  display: none !important;
 }
 
 .codingexpo-fixed-footerbar__socials {
-  display: inline-flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 33.3333%);
   align-items: center;
-  gap: 9px;
+  justify-content: stretch;
+  gap: 10px;
 }
 
 .codingexpo-fixed-footerbar__socials .social-icon {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  border-radius: 50%;
+  width: 100%;
+  min-height: 72px;
+  border-radius: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #1d7ed8;
   background: #ffffff;
   border: 1px solid rgba(53, 163, 255, 0.34);
-  font-size: 16px;
-  line-height: 1;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+  gap: 0;
+  padding: 8px 10px;
+  white-space: nowrap;
 }
 
 .codingexpo-fixed-footerbar__socials .social-icon:hover {
@@ -2656,32 +2981,32 @@ body {
   transform: translateY(-1px);
 }
 
+.codingexpo-fixed-footerbar__socials .social-icon i {
+  font-size: 26px;
+}
+
 /* space for fixed footer bar */
 body {
-  padding-bottom: 94px !important;
+  padding-bottom: 138px !important;
 }
 
 @media (max-width: 767px) {
   .codingexpo-fixed-footerbar__inner {
-    min-height: 96px;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 0 12px;
-  }
-
-  .codingexpo-fixed-footerbar__copy {
-    font-size: 13px;
+    min-height: 112px;
+    padding: 12px 0;
   }
 
   .codingexpo-fixed-footerbar__socials .social-icon {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    font-size: 14px;
+    min-height: 64px;
+    font-size: 22px;
+    padding: 6px 8px;
+  }
+
+  .codingexpo-fixed-footerbar__socials .social-icon i {
+    font-size: 24px;
   }
 
   body {
-    padding-bottom: 120px !important;
+    padding-bottom: 130px !important;
   }
 }
