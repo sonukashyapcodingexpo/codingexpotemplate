@@ -132,6 +132,22 @@
   padding-bottom: 8px !important;
 }
 
+/* Home 3: keep Contact Us button fully visible (base theme sets absolute left:-60px) */
+.main-header--three .main-header__btn,
+.sticky-header--cloned.main-header--three .main-header__btn {
+  position: relative !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-right: 8px;
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.main-header--three .main-header__right__right,
+.sticky-header--cloned.main-header--three .main-header__right__right {
+  overflow: visible;
+}
+
 .main-header .main-header__logo img.codingexpo-logo,
 .sticky-header--cloned .main-header__logo img.codingexpo-logo {
   width: auto !important;
@@ -157,21 +173,40 @@
   padding-right: 36px !important;
 }
 
-/* Top bar: white text on dark strip (location + email) */
-.topbar__info li,
-.topbar__info li a {
+/* Top bar: white text only on default dark strip (Home 1). Home 3 (.topbar--three) and Home 2 (.topbar--two) use light backgrounds — do not force white there. */
+.topbar:not(.topbar--three):not(.topbar--two) .topbar__info li,
+.topbar:not(.topbar--three):not(.topbar--two) .topbar__info li a {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff;
 }
 
-.topbar__info li a:hover {
+.topbar:not(.topbar--three):not(.topbar--two) .topbar__info li a:hover {
   color: #ffffff !important;
   opacity: 0.92;
 }
 
+/* Home 3 topbar: dark text on peach strip so location + email are readable */
+.topbar--three .topbar__info li,
+.topbar--three .topbar__info li a {
+  color: var(--getizy-secondary, #222230) !important;
+  -webkit-text-fill-color: var(--getizy-secondary, #222230);
+}
+
+.topbar--three .topbar__info li a:hover {
+  color: var(--getizy-base, #d33d35) !important;
+  opacity: 1;
+}
+
+/* Home 3 header: “Call Us Now” label — theme used white on white */
+.main-header--three .main-header__right__right .info-item .content__text {
+  color: var(--getizy-secondary, #222230) !important;
+}
+
+
 /* Reduce perceived blur by forcing clean rendering and cover-fit on cards */
 .blog-card__image-item img,
 .project-one__img img,
+.codingexpo-portfolio-card__media img,
 .features-one__card__image img,
 .team-one__img img,
 .testimonials-simple__photo {
@@ -499,11 +534,6 @@
   pointer-events: auto !important;
 }
 
-/* Temporarily hide Latest Project section */
-#project.project-one {
-  display: none !important;
-}
-
 /* #services and .section-bg-solid-orange sit on the same <section> — do NOT use ".orange #services" (never matches) */
 #services .service-one__card__title {
   color: #000000 !important;
@@ -709,5 +739,281 @@
     height: 60px !important;
     min-width: 60px;
     font-size: 24px;
+  }
+}
+
+/* Home 3 hero (hero-slider-three): readable headline on dark slides */
+#home.hero-slider-three .hero-slider-three__title,
+#home.hero-slider-three .hero-slider-three__title .hero-slider-three__title__anim {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+}
+
+#home.hero-slider-three .hero-slider-three__desc {
+  color: rgba(255, 255, 255, 0.9) !important;
+  max-width: 40rem;
+}
+
+/* —— Portfolio: two-row opposite slider —— */
+#project.codingexpo-portfolio {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 96px;
+  background:
+    radial-gradient(1200px 300px at 20% 0%, rgba(251, 132, 89, 0.15), transparent 65%),
+    radial-gradient(900px 260px at 85% 100%, rgba(211, 61, 53, 0.13), transparent 70%),
+    linear-gradient(180deg, #f5f9ff 0%, #eaf3ff 50%, #e2ecfb 100%);
+}
+
+.codingexpo-portfolio__intro {
+  max-width: 760px;
+  margin: 0 auto 2.25rem;
+}
+
+.codingexpo-portfolio__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.9rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--getizy-base, #d33d35), var(--getizy-base-two, #fb8459));
+  box-shadow: 0 10px 24px rgba(211, 61, 53, 0.28);
+}
+
+.codingexpo-portfolio__heading {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.95rem, 4.5vw, 3.1rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--getizy-secondary, #222230);
+}
+
+.codingexpo-portfolio__lede {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #5c6b80;
+}
+
+.codingexpo-portfolio__reel {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.codingexpo-portfolio__reel::before,
+.codingexpo-portfolio__reel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.codingexpo-portfolio__reel::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(234, 243, 255, 1) 0%, rgba(234, 243, 255, 0) 100%);
+}
+
+.codingexpo-portfolio__reel::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(234, 243, 255, 1) 0%, rgba(234, 243, 255, 0) 100%);
+}
+
+.codingexpo-portfolio__reel--second {
+  margin-top: 14px;
+}
+
+.codingexpo-portfolio__track {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  width: max-content;
+  will-change: transform;
+}
+
+.codingexpo-portfolio__track--ltr {
+  animation: codingexpo-reel-ltr 42s linear infinite;
+}
+
+.codingexpo-portfolio__track--rtl {
+  animation: codingexpo-reel-rtl 46s linear infinite;
+}
+
+.codingexpo-portfolio__reel:hover .codingexpo-portfolio__track {
+  animation-play-state: paused;
+}
+
+.codingexpo-portfolio-card {
+  width: min(340px, 78vw);
+  flex: 0 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(147, 167, 195, 0.34);
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.08),
+    0 22px 50px rgba(15, 23, 42, 0.1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.codingexpo-portfolio-card:hover {
+  transform: translateY(-7px);
+  box-shadow:
+    0 16px 34px rgba(15, 23, 42, 0.13),
+    0 30px 64px rgba(15, 23, 42, 0.16);
+}
+
+.codingexpo-portfolio-card__media {
+  display: block;
+  height: 205px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f8fbff 0%, #edf4ff 100%);
+}
+
+.codingexpo-portfolio-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+
+.codingexpo-portfolio-card:hover .codingexpo-portfolio-card__media img {
+  transform: scale(1.03);
+}
+
+.codingexpo-portfolio-card__body {
+  padding: 14px 16px 16px;
+}
+
+.codingexpo-portfolio-card__title {
+  margin: 0 0 4px;
+  font-size: 1.04rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--getizy-secondary, #222230);
+}
+
+.codingexpo-portfolio-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.codingexpo-portfolio-card__title a:hover {
+  color: var(--getizy-base, #d33d35);
+}
+
+.codingexpo-portfolio-card__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #60708a;
+}
+
+@keyframes codingexpo-reel-ltr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes codingexpo-reel-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 991px) {
+  #project.codingexpo-portfolio {
+    padding: 68px 0 74px;
+  }
+
+  .codingexpo-portfolio__track--ltr {
+    animation-duration: 34s;
+  }
+
+  .codingexpo-portfolio__track--rtl {
+    animation-duration: 36s;
+  }
+}
+
+@media (max-width: 767px) {
+  .codingexpo-portfolio__intro {
+    margin-bottom: 1.5rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .codingexpo-portfolio__heading {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+  }
+
+  .codingexpo-portfolio__lede {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .codingexpo-portfolio__reel::before,
+  .codingexpo-portfolio__reel::after {
+    width: 36px;
+  }
+
+  .codingexpo-portfolio__track {
+    gap: 12px;
+  }
+
+  .codingexpo-portfolio-card {
+    width: min(300px, 84vw);
+    border-radius: 14px;
+  }
+
+  .codingexpo-portfolio-card__media {
+    height: 170px;
+  }
+
+  .codingexpo-portfolio-card__body {
+    padding: 12px;
+  }
+
+  .codingexpo-portfolio-card__title {
+    font-size: 0.98rem;
+  }
+
+  .codingexpo-portfolio-card__desc {
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .codingexpo-portfolio-card {
+    width: min(280px, 90vw);
+  }
+
+  .codingexpo-portfolio-card__media {
+    height: 155px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .codingexpo-portfolio__track--ltr,
+  .codingexpo-portfolio__track--rtl {
+    animation: none !important;
   }
 }
