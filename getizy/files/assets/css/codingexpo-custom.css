@@ -100,14 +100,14 @@
 /* Compact header (~half height): less vertical padding only — nav font sizes & logo max-height unchanged */
 .main-header .main-menu .main-menu__list > li,
 .sticky-header--cloned .main-menu .main-menu__list > li {
-  padding-top: 18px !important;
-  padding-bottom: 18px !important;
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
 }
 
 .main-header .main-header__logo,
 .sticky-header--cloned .main-header__logo {
-  padding-top: 14px !important;
-  padding-bottom: 14px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
   padding-left: 48px !important;
   padding-right: 48px !important;
 }
@@ -123,14 +123,14 @@
 
 .main-header .main-header__right__right,
 .sticky-header--cloned .main-header__right__right {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
 }
 
 .main-header .main-header__btn,
 .sticky-header--cloned .main-header__btn {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
 }
 
 /* Home 3: keep Contact Us button fully visible (base theme sets absolute left:-60px) */
@@ -153,7 +153,7 @@
 .sticky-header--cloned .main-header__logo img.codingexpo-logo {
   width: auto !important;
   height: auto !important;
-  max-height: 48px !important;
+  max-height: 36px !important;
 }
 
 @media (max-width: 1199px) {
@@ -295,8 +295,8 @@
   }
 
   .main-header--three .main-header__btn {
-    padding: 9px 12px !important;
-    font-size: 13px !important;
+    padding: 7px 10px !important;
+    font-size: 12px !important;
   }
 }
 
@@ -913,8 +913,45 @@ body {
   position: relative;
 }
 
+/* Reduce top spacing in hero (all screens) */
+#home.hero-slider-three .hero-slider-three__wrapper {
+  padding-top: 0 !important;
+}
+
 #home.hero-slider-three .hero-slider-three__item {
   min-height: clamp(560px, 78vh, 760px);
+}
+
+/* Laptop: reduce hero height slightly */
+@media (min-width: 992px) and (max-width: 1600px) {
+  #home.hero-slider-three .hero-slider-three__item {
+    min-height: clamp(360px, 48vh, 460px) !important;
+  }
+
+  /* Also shrink content so section can actually reduce */
+  #home.hero-slider-three .codingexpo-hero-layout__left {
+    padding: 18px 18px 20px;
+  }
+
+  #home.hero-slider-three .hero-slider-three__title,
+  #home.hero-slider-three .hero-slider-three__title .hero-slider-three__title__anim {
+    font-size: clamp(1.26rem, 2.5vw, 2.1rem) !important;
+  }
+
+  #home.hero-slider-three .hero-slider-three__desc {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-form {
+    padding: 16px;
+  }
+
+  #home.hero-slider-three .codingexpo-hero-form input,
+  #home.hero-slider-three .codingexpo-hero-form select,
+  #home.hero-slider-three .codingexpo-hero-form__submit {
+    height: 42px;
+  }
 }
 
 #home.hero-slider-three .hero-slider-three__bg::after {
@@ -936,6 +973,7 @@ body {
   box-shadow: none;
   position: relative;
   z-index: 4;
+  margin-top: 25px;
 }
 
 #home.hero-slider-three .hero-slider-three__title {
@@ -949,7 +987,7 @@ body {
   background-image: none !important;
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
-  font-size: clamp(2.05rem, 5.2vw, 4rem) !important;
+  font-size: clamp(1.45rem, 3.65vw, 2.8rem) !important;
   line-height: 1.08 !important;
   font-weight: 800 !important;
   letter-spacing: -0.02em;
@@ -963,7 +1001,7 @@ body {
 #home.hero-slider-three .hero-slider-three__desc {
   color: rgba(244, 250, 255, 0.94) !important;
   max-width: 39rem;
-  font-size: clamp(1rem, 1.7vw, 1.14rem) !important;
+  font-size: clamp(0.92rem, 1.25vw, 1.02rem) !important;
   line-height: 1.62 !important;
   margin-top: 8px;
 }
@@ -974,9 +1012,9 @@ body {
 
 #home.hero-slider-three .codingexpo-hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
-  gap: 22px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 330px);
+  gap: 16px;
+  align-items: stretch;
 }
 
 #home.hero-slider-three .codingexpo-hero-layout__left {
@@ -987,25 +1025,33 @@ body {
   box-shadow:
     0 10px 26px rgba(11, 27, 45, 0.28),
     0 24px 64px rgba(11, 27, 45, 0.22);
-  padding: clamp(20px, 3vw, 34px);
+  padding: clamp(14px, 2.2vw, 24px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #home.hero-slider-three .codingexpo-hero-layout__right {
   width: 100%;
+  height: 100%;
 }
 
 #home.hero-slider-three .codingexpo-hero-form {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(241, 248, 255, 0.95));
   border: 1px solid rgba(137, 192, 238, 0.42);
-  border-radius: 18px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 14px;
   box-shadow: 0 14px 34px rgba(10, 32, 54, 0.22);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 #home.hero-slider-three .codingexpo-hero-form__title {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: #17324f;
-  font-size: 1.28rem;
+  font-size: 1.05rem;
   font-weight: 800;
 }
 
@@ -1016,19 +1062,19 @@ body {
 
 #home.hero-slider-three .codingexpo-hero-form__grid {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 #home.hero-slider-three .codingexpo-hero-form input,
 #home.hero-slider-three .codingexpo-hero-form select {
   width: 100%;
-  height: 46px;
-  border-radius: 11px;
+  height: 38px;
+  border-radius: 10px;
   border: 1px solid rgba(137, 192, 238, 0.58);
   background: #fff;
   color: #17324f;
-  font-size: 15px;
-  padding: 10px 13px;
+  font-size: 13px;
+  padding: 8px 10px;
   outline: none;
 }
 
@@ -1039,14 +1085,14 @@ body {
 }
 
 #home.hero-slider-three .codingexpo-hero-form__submit {
-  margin-top: 12px;
+  margin-top: 10px;
   width: 100%;
-  height: 48px;
+  height: 40px;
   border: 0;
-  border-radius: 11px;
+  border-radius: 10px;
   background: linear-gradient(90deg, #ff9f58 0%, #ff7a2f 100%);
   color: #fff;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -1086,8 +1132,8 @@ body {
   }
 
   #home.hero-slider-three .codingexpo-hero-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 390px);
-    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 310px);
+    gap: 12px;
   }
 }
 
@@ -1118,7 +1164,7 @@ body {
   }
 
   #home.hero-slider-three .hero-slider-three__wrapper {
-    padding-top: 20px;
+    padding-top: 16px;
   }
 
   #home.hero-slider-three .hero-slider__content {
@@ -1184,37 +1230,50 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(6, 20, 36, 0.62);
+  backdrop-filter: blur(6px);
 }
 
 .codingexpo-enquiry-popup__dialog {
   position: relative;
-  width: 70vw;
-  max-width: 860px;
-  margin: min(10vh, 72px) auto 0;
+  width: 85vw;
+  max-width: 980px;
+  height: 85vh;
+  max-height: 85vh;
+  margin: 7.5vh auto 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
 }
 
 .codingexpo-enquiry-popup__close {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   border: 0;
-  background: #17324f;
+  background: rgba(23, 50, 79, 0.92);
   color: #fff;
-  font-size: 23px;
+  font-size: 26px;
   line-height: 1;
   cursor: pointer;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.22);
 }
 
 .codingexpo-hero-form--popup {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(241, 248, 255, 0.96));
   border: 1px solid rgba(137, 192, 238, 0.46);
-  border-radius: 16px;
-  padding: 22px !important;
-  box-shadow: 0 16px 38px rgba(10, 32, 54, 0.24);
+  border-radius: 18px;
+  padding: 26px !important;
+  box-shadow:
+    0 16px 38px rgba(10, 32, 54, 0.22),
+    0 40px 90px rgba(10, 32, 54, 0.22);
+  width: min(900px, 100%);
+  max-height: 100%;
+  overflow: auto;
 }
 
 .codingexpo-hero-form--popup .codingexpo-hero-form__title {
@@ -1227,14 +1286,14 @@ body {
 .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
 }
 
 .codingexpo-hero-form--popup .codingexpo-hero-form__grid input,
 .codingexpo-hero-form--popup .codingexpo-hero-form__grid select {
   width: 100%;
-  height: 46px;
-  border-radius: 10px;
+  height: 48px;
+  border-radius: 12px;
   border: 1px solid rgba(137, 192, 238, 0.6);
   background: #ffffff;
   color: #17324f;
@@ -1254,11 +1313,12 @@ body {
   width: 100%;
   height: 48px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   background: linear-gradient(90deg, #ff9f58 0%, #ff7a2f 100%);
   color: #fff;
   font-size: 15px;
   font-weight: 700;
+  box-shadow: 0 12px 26px rgba(255, 122, 47, 0.28);
 }
 
 /* Inline enquiry form under Why Choose Us */
@@ -1270,6 +1330,37 @@ body {
   width: 80vw;
   max-width: 1120px;
   margin: 0 auto;
+}
+
+/* Inline enquiry form (above footer): scale up ~1.5x */
+.codingexpo-enquiry-inline .codingexpo-hero-form--popup {
+  padding: 38px !important;
+  border-radius: 22px;
+}
+
+.codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__title {
+  font-size: clamp(1.25rem, 2.6vw, 1.8rem);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
+  gap: 16px;
+}
+
+.codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid input,
+.codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid select {
+  height: 64px;
+  border-radius: 14px;
+  font-size: 16px;
+  padding: 14px 16px;
+}
+
+.codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__submit {
+  height: 64px;
+  border-radius: 14px;
+  font-size: 16px;
+  margin-top: 16px;
 }
 
 /* Contact strip between About and Services */
@@ -1332,9 +1423,12 @@ body {
   }
 
   .codingexpo-enquiry-popup__dialog {
-    width: 70vw;
-    min-width: 300px;
-    margin-top: 52px;
+    width: 85vw;
+    min-width: 0;
+    height: 85vh;
+    max-height: 85vh;
+    margin-top: 7.5vh;
+    padding: 12px;
   }
 
   .codingexpo-hero-form--popup {
@@ -1351,6 +1445,17 @@ body {
 
   .codingexpo-enquiry-inline__inner {
     width: 80vw;
+  }
+
+  .codingexpo-enquiry-inline .codingexpo-hero-form--popup {
+    padding: 20px !important;
+  }
+
+  .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid input,
+  .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid select,
+  .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__submit {
+    height: 52px;
+    font-size: 14px;
   }
 
   .codingexpo-contact-strip {
@@ -2936,12 +3041,12 @@ body {
 }
 
 .codingexpo-fixed-footerbar__inner {
-  min-height: 112px;
+  min-height: 84px;
   display: block;
   align-items: center;
   justify-content: space-between;
   gap: 0;
-  padding: 14px 0;
+  padding: 10px 0;
 }
 
 .codingexpo-fixed-footerbar__copy {
@@ -2954,25 +3059,39 @@ body {
   grid-template-columns: repeat(3, 33.3333%);
   align-items: center;
   justify-content: stretch;
-  gap: 10px;
+  gap: 8px;
 }
 
 .codingexpo-fixed-footerbar__socials .social-icon {
   width: 100%;
-  min-height: 72px;
+  min-height: 54px;
   border-radius: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #1d7ed8;
   background: #ffffff;
-  border: 1px solid rgba(53, 163, 255, 0.34);
-  font-size: 24px;
+  border: 0;
+  font-size: 18px;
   line-height: 1.2;
   font-weight: 700;
   gap: 0;
-  padding: 8px 10px;
+  padding: 6px 8px;
   white-space: nowrap;
+}
+
+.codingexpo-fixed-footerbar__socials .social-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Slightly larger Gmail + WhatsApp icons */
+.codingexpo-fixed-footerbar__socials .social-icon:nth-child(2) img,
+.codingexpo-fixed-footerbar__socials .social-icon:nth-child(3) img {
+  width: 58px;
+  height: 58px;
 }
 
 .codingexpo-fixed-footerbar__socials .social-icon:hover {
@@ -2982,31 +3101,31 @@ body {
 }
 
 .codingexpo-fixed-footerbar__socials .social-icon i {
-  font-size: 26px;
+  font-size: 20px;
 }
 
 /* space for fixed footer bar */
 body {
-  padding-bottom: 138px !important;
+  padding-bottom: 104px !important;
 }
 
 @media (max-width: 767px) {
   .codingexpo-fixed-footerbar__inner {
-    min-height: 112px;
-    padding: 12px 0;
+    min-height: 84px;
+    padding: 9px 0;
   }
 
   .codingexpo-fixed-footerbar__socials .social-icon {
-    min-height: 64px;
-    font-size: 22px;
-    padding: 6px 8px;
+    min-height: 48px;
+    font-size: 16px;
+    padding: 5px 6px;
   }
 
   .codingexpo-fixed-footerbar__socials .social-icon i {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   body {
-    padding-bottom: 130px !important;
+    padding-bottom: 98px !important;
   }
 }
