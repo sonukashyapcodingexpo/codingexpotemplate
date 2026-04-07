@@ -1169,6 +1169,7 @@
 
             var forms = document.querySelectorAll(".codingexpo-hero-form");
             var whatsappNumber = "919810523316";
+            var pabblyWebhookUrl = "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZmMDYzZTA0MzY1MjY0NTUzZDUxMzci_pc";
 
             forms.forEach(function (form) {
                 form.addEventListener("submit", function (event) {
@@ -1195,7 +1196,29 @@
                     ].join("\n");
 
                     var whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
-                    window.location.href = whatsappUrl;
+                    var payload = {
+                        source: "codingexpo-website",
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        technology: technology,
+                        budget: budget,
+                        message: message,
+                        submitted_at: new Date().toISOString()
+                    };
+
+                    fetch(pabblyWebhookUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload),
+                        mode: "no-cors"
+                    }).catch(function () {
+                        /* ignore webhook errors and continue WhatsApp redirect */
+                    }).finally(function () {
+                        window.location.href = whatsappUrl;
+                    });
                 });
             });
         })();
