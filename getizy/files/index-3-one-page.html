@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="assets/css/codingexpo-custom.css" />
 </head>
 
+
+
 <body class="custom-cursor">
 
     <div class="custom-cursor__cursor"></div>
@@ -1030,7 +1032,7 @@
                 aria-label="Quick enquiry form">
                 <button type="button" class="codingexpo-enquiry-popup__close" data-popup-close="true"
                     aria-label="Close enquiry form">&times;</button>
-                <form class="codingexpo-hero-form codingexpo-hero-form--popup" action="#contact">
+                <form class="codingexpo-hero-form codingexpo-hero-form--popup" action="#contact" novalidate>
                     <h4 class="codingexpo-hero-form__title">Have an enquiry? Fill this form — we’ll reach out shortly.</h4>
                     <div class="codingexpo-hero-form__grid">
                         <input type="text" name="name" placeholder="Name" required>
@@ -1051,6 +1053,7 @@
                             <option>1Lacs Above</option>
                         </select>
                     </div>
+                    <p class="codingexpo-hero-form__feedback" role="status" aria-live="polite" hidden></p>
                     <button type="submit" class="codingexpo-hero-form__submit">Submit</button>
                 </form>
             </div>
@@ -1058,7 +1061,26 @@
 
     </div><!-- /.page-wrapper -->
 
-
+    <!-- Hidden Zoho Bigin form — matches CET Contact form embed from Bigin -->
+    <form id="BiginWebToRecordForm1225393000000539021" name="BiginWebToRecordForm1225393000000539021"
+        method="POST" action="https://bigin.zoho.in/crm/WebForm" enctype="multipart/form-data"
+        accept-charset="UTF-8" target="hidden1225393000000539021Frame" style="display:none;"
+        aria-hidden="true">
+        <input type="text" style="display:none;" name="xnQsjsdp"
+            value="4a79437fd5c13b7cdcba458310660a02544d22c711a39c02e2ff2e0316ad424a">
+        <input type="hidden" name="zc_gad" id="zc_gad" value="">
+        <input type="text" style="display:none;" name="xmIwtLD"
+            value="63206d183a44079626f7eabd647fa72d8f97fd7925d82c73f0b4281dc8e81ca099e233d93d0a5f196f09ffc006b9adec">
+        <input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=">
+        <input type="hidden" name="rmsg" id="rmsg" value="true">
+        <input type="text" style="display:none;" name="returnURL" value="null">
+        <input type="text" name="Last Name" id="codingexpoZohoLastName" maxlength="80" value="">
+        <input type="text" name="Phone" id="codingexpoZohoPhone" maxlength="50" value="">
+        <input type="text" name="Email" id="codingexpoZohoEmail" maxlength="100" value="">
+        <textarea name="Description" id="codingexpoZohoDescription" maxlength="32000"></textarea>
+    </form>
+    <iframe id="hidden1225393000000539021Frame" name="hidden1225393000000539021Frame"
+        title="Zoho form submission" class="iframe-container" style="display:none;"></iframe>
 
     <div class="mobile-nav__wrapper">
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
@@ -1155,11 +1177,24 @@
     <script src="assets/js/getizy.js"></script>
     <script>
         (function () {
+            var ZOHO_FORM_ACTION = "https://bigin.zoho.in/crm/WebForm";
             var popup = document.getElementById("codingexpoEnquiryPopup");
+            var zohoForm = document.getElementById("BiginWebToRecordForm1225393000000539021");
+            var zohoLastName = document.getElementById("codingexpoZohoLastName");
+            var zohoPhone = document.getElementById("codingexpoZohoPhone");
+            var zohoEmail = document.getElementById("codingexpoZohoEmail");
+            var zohoDescription = document.getElementById("codingexpoZohoDescription");
+            var thankYouMessage = "Thank you! We received your enquiry and will contact you shortly.";
+
+            if (zohoForm) {
+                zohoForm.action = ZOHO_FORM_ACTION;
+            }
+
             if (popup) {
                 popup.classList.add("is-open");
                 popup.setAttribute("aria-hidden", "false");
             }
+
             document.addEventListener("click", function (event) {
                 if (popup && event.target && event.target.getAttribute("data-popup-close") === "true") {
                     popup.classList.remove("is-open");
@@ -1176,11 +1211,77 @@
                 });
             });
 
-            var forms = document.querySelectorAll(".codingexpo-hero-form");
-            var whatsappNumber = "919810523316";
-            var pabblyWebhookUrl = "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZmMDYzZTA0MzY1MjY0NTUzZDUxMzci_pc";
+            function getFieldValue(form, names) {
+                var i;
+                for (i = 0; i < names.length; i += 1) {
+                    var field = form.querySelector('[name="' + names[i] + '"]');
+                    if (field && field.value) {
+                        return field.value.trim();
+                    }
+                }
+                return "";
+            }
 
-            forms.forEach(function (form) {
+            function showFormFeedback(form, message) {
+                var feedback = form.querySelector(".codingexpo-hero-form__feedback");
+                if (feedback) {
+                    feedback.textContent = message;
+                    feedback.hidden = false;
+                } else {
+                    window.alert(message);
+                }
+            }
+
+            function resetFormFeedback(form) {
+                var feedback = form.querySelector(".codingexpo-hero-form__feedback");
+                if (feedback) {
+                    feedback.textContent = "";
+                    feedback.hidden = true;
+                }
+            }
+
+            function isValidEmail(value) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            }
+
+            function submitLeadToZoho(visibleForm) {
+                if (!zohoForm || !zohoLastName || !zohoPhone || !zohoEmail || !zohoDescription) {
+                    return false;
+                }
+
+                var name = getFieldValue(visibleForm, ["name", "Last Name"]);
+                var phone = getFieldValue(visibleForm, ["phone", "Phone"]);
+                var email = getFieldValue(visibleForm, ["email", "Email"]);
+                var technology = getFieldValue(visibleForm, ["technology"]);
+                var budget = getFieldValue(visibleForm, ["budget"]);
+
+                if (!name) {
+                    window.alert("Please enter your name.");
+                    return false;
+                }
+                if (!phone) {
+                    window.alert("Please enter your phone number.");
+                    return false;
+                }
+                if (email && !isValidEmail(email)) {
+                    window.alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                zohoLastName.value = name;
+                zohoPhone.value = phone;
+                zohoEmail.value = email;
+                zohoDescription.value =
+                    "Technology: " + technology + "\n" +
+                    "Budget: " + budget;
+
+                zohoForm.action = ZOHO_FORM_ACTION;
+                document.charset = "UTF-8";
+                zohoForm.submit();
+                return true;
+            }
+
+            document.querySelectorAll(".codingexpo-hero-form").forEach(function (form) {
                 form.addEventListener("submit", function (event) {
                     event.preventDefault();
 
@@ -1189,45 +1290,23 @@
                         return;
                     }
 
-                    var name = (form.querySelector('[name="name"]') || {}).value || "";
-                    var phone = (form.querySelector('[name="phone"]') || {}).value || "";
-                    var email = (form.querySelector('[name="email"]') || {}).value || "";
-                    var technology = (form.querySelector('[name="technology"]') || {}).value || "";
-                    var budget = (form.querySelector('[name="budget"]') || {}).value || "";
+                    resetFormFeedback(form);
 
-                    var message = [
-                        "Hello Coding Expo, I want an enquiry.",
-                        "Name: " + name,
-                        "Phone: " + phone,
-                        "Email: " + email,
-                        "Technology: " + technology,
-                        "Budget: " + budget
-                    ].join("\n");
+                    if (!submitLeadToZoho(form)) {
+                        window.alert("Unable to submit your enquiry right now. Please call us or email sales@codingexpo.org.");
+                        return;
+                    }
 
-                    var whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
-                    var payload = {
-                        source: "codingexpo-website",
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        technology: technology,
-                        budget: budget,
-                        message: message,
-                        submitted_at: new Date().toISOString()
-                    };
+                    showFormFeedback(form, thankYouMessage);
+                    form.reset();
 
-                    fetch(pabblyWebhookUrl, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(payload),
-                        mode: "no-cors"
-                    }).catch(function () {
-                        /* ignore webhook errors and continue WhatsApp redirect */
-                    }).finally(function () {
-                        window.location.href = whatsappUrl;
-                    });
+                    if (popup && form.closest("#codingexpoEnquiryPopup")) {
+                        window.setTimeout(function () {
+                            popup.classList.remove("is-open");
+                            popup.setAttribute("aria-hidden", "true");
+                            resetFormFeedback(form);
+                        }, 2500);
+                    }
                 });
             });
         })();

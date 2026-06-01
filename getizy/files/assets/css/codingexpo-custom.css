@@ -1334,6 +1334,22 @@ body {
   box-shadow: 0 0 0 3px rgba(53, 163, 255, 0.16);
 }
 
+.codingexpo-hero-form__feedback {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #166534;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.codingexpo-hero-form__feedback[hidden] {
+  display: none !important;
+}
+
 .codingexpo-hero-form--popup .codingexpo-hero-form__submit {
   margin-top: 12px;
   width: 100%;
