@@ -1,0 +1,8 @@
+# Apache: serve the one-page site at / and /index.html (clean URL, assets stay under getizy/files/)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteRule ^$ getizy/files/index-3-one-page.html [L]
+  RewriteRule ^index\.html$ getizy/files/index-3-one-page.html [L]
+</IfModule>

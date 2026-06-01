@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/getizy/files/">
+    <link rel="canonical" href="https://website.codingexpo.org/index.html">
+    <script>
+        (function () {
+            var cleanPath = "/index.html";
+            if (window.location.pathname !== cleanPath) {
+                window.history.replaceState(null, document.title, cleanPath);
+            }
+        })();
+    </script>
     <title>Coding Expo || Home 3 — One Page IT Services</title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
@@ -100,7 +110,7 @@
             <div class="main-header__container-fluid container-fluid">
                 <div class="main-header__inner">
                     <div class="main-header__logo">
-                        <a href="index-3-one-page.html" aria-label="Coding Expo Technology — Home">
+                        <a href="/index.html" aria-label="Coding Expo Technology — Home">
                             <img src="assets/codingexpotemplate/codingexpo-logo.png" alt="Coding Expo Technology"
                                 class="codingexpo-logo codingexpo-logo--header" width="240" height="64" decoding="async">
                         </a>
@@ -1089,7 +1099,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index-3-one-page.html" aria-label="Coding Expo Technology — Home">
+                <a href="/index.html" aria-label="Coding Expo Technology — Home">
                     <img src="assets/codingexpotemplate/codingexpo-logo.png" alt="Coding Expo Technology"
                         class="codingexpo-logo codingexpo-logo--mobile" width="240" height="64" decoding="async"></a>
             </div>
