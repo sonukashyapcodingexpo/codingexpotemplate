@@ -377,6 +377,16 @@
     0 8px 20px rgba(15, 23, 42, 0.12);
 }
 
+/* Portrait photos: bias crop toward upper area so the avatar reads as face-first */
+.testimonials-simple__photo--face-focus {
+  object-position: center 18%;
+}
+
+/* Chest-up / selfie: face sits a bit lower in frame than formal portraits */
+.testimonials-simple__photo--face-focus.testimonials-simple__photo--face-selfie {
+  object-position: center 32%;
+}
+
 .testimonials-simple__card:hover .testimonials-simple__photo {
   transform: scale(1.06);
 }
@@ -868,13 +878,13 @@ body {
     padding-bottom: 86px;
   }
 
-  /* Top bar: keep "Delhi, India" in one line on small screens */
+  /* Top bar: keep "Noida, India" in one line on small screens */
   .topbar--three .topbar__info li,
   .topbar--three .topbar__info li a {
     white-space: nowrap;
   }
 
-  /* Footer contact location: keep "Delhi, India" on one line */
+  /* Footer contact location: keep "Noida, India" on one line */
   .main-footer__infu .infu__link a[href*="google.com/maps"] {
     white-space: nowrap;
     display: inline-block;
@@ -889,7 +899,7 @@ body {
 }
 
 @media (max-width: 575px) {
-  /* Footer location row: keep icon + Delhi, India on one line */
+  /* Footer location row: keep icon + Noida, India on one line */
   .main-footer__infu:nth-child(3) .infu {
     display: flex !important;
     align-items: center !important;
@@ -974,10 +984,13 @@ body {
   position: relative;
   z-index: 4;
   margin-top: 25px;
+  align-items: stretch;
 }
 
 #home.hero-slider-three .hero-slider-three__title {
   margin-bottom: 14px;
+  align-items: flex-start;
+  text-align: left;
 }
 
 #home.hero-slider-three .hero-slider-three__title,
@@ -992,6 +1005,7 @@ body {
   font-weight: 800 !important;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  text-align: left;
 }
 
 #home.hero-slider-three .hero-slider-three__title__anim:last-child {
@@ -1004,6 +1018,7 @@ body {
   font-size: clamp(0.92rem, 1.25vw, 1.02rem) !important;
   line-height: 1.62 !important;
   margin-top: 8px;
+  text-align: left;
 }
 
 #home.hero-slider-three .hero-slider-three__btn {
@@ -1018,18 +1033,28 @@ body {
 }
 
 #home.hero-slider-three .codingexpo-hero-layout__left {
-  background: linear-gradient(140deg, rgba(10, 32, 54, 0.74) 0%, rgba(15, 55, 90, 0.58) 100%);
-  border: 1px solid rgba(142, 205, 255, 0.34);
+  background: transparent;
+  border: 0;
   border-radius: 20px;
-  backdrop-filter: blur(6px);
-  box-shadow:
-    0 10px 26px rgba(11, 27, 45, 0.28),
-    0 24px 64px rgba(11, 27, 45, 0.22);
+  backdrop-filter: none;
+  box-shadow: none;
   padding: clamp(14px, 2.2vw, 24px);
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Keep headline and body readable on the photo without a solid panel */
+#home.hero-slider-three .codingexpo-hero-layout__left .hero-slider-three__title,
+#home.hero-slider-three .codingexpo-hero-layout__left .hero-slider-three__title .hero-slider-three__title__anim {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+#home.hero-slider-three .codingexpo-hero-layout__left .hero-slider-three__desc {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 16px rgba(0, 0, 0, 0.3);
 }
 
 #home.hero-slider-three .codingexpo-hero-layout__right {
@@ -1174,6 +1199,7 @@ body {
     padding: 0;
     border-radius: 0;
     backdrop-filter: none;
+    align-items: stretch;
   }
 
   #home.hero-slider-three .codingexpo-hero-layout__left {
@@ -1235,8 +1261,8 @@ body {
 
 .codingexpo-enquiry-popup__dialog {
   position: relative;
-  width: 85vw;
-  max-width: 980px;
+  width: 42.5vw;
+  max-width: 490px;
   height: 85vh;
   max-height: 85vh;
   margin: 7.5vh auto 0;
@@ -1271,7 +1297,7 @@ body {
   box-shadow:
     0 16px 38px rgba(10, 32, 54, 0.22),
     0 40px 90px rgba(10, 32, 54, 0.22);
-  width: min(900px, 100%);
+  width: min(450px, 100%);
   max-height: 100%;
   overflow: auto;
 }
@@ -1285,7 +1311,7 @@ body {
 
 .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 }
 
