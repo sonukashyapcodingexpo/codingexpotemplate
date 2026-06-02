@@ -243,6 +243,7 @@
                                                                 <option>1Lacs Above</option>
                                                             </select>
                                                         </div>
+                                                        <p class="codingexpo-hero-form__feedback" role="status" aria-live="polite" hidden></p>
                                                         <button type="submit" class="codingexpo-hero-form__submit">Submit</button>
                                                     </form>
                                                 </div>
@@ -311,6 +312,7 @@
                                                                 <option>1Lacs Above</option>
                                                             </select>
                                                         </div>
+                                                        <p class="codingexpo-hero-form__feedback" role="status" aria-live="polite" hidden></p>
                                                         <button type="submit" class="codingexpo-hero-form__submit">Submit</button>
                                                     </form>
                                                 </div>
@@ -379,6 +381,7 @@
                                                                 <option>1Lacs Above</option>
                                                             </select>
                                                         </div>
+                                                        <p class="codingexpo-hero-form__feedback" role="status" aria-live="polite" hidden></p>
                                                         <button type="submit" class="codingexpo-hero-form__submit">Submit</button>
                                                     </form>
                                                 </div>
@@ -947,6 +950,7 @@
                             <option>1Lacs Above</option>
                         </select>
                     </div>
+                    <p class="codingexpo-hero-form__feedback" role="status" aria-live="polite" hidden></p>
                     <button type="submit" class="codingexpo-hero-form__submit">Submit</button>
                 </form>
             </div>
@@ -1092,14 +1096,14 @@
             value="63206d183a44079626f7eabd647fa72d8f97fd7925d82c73f0b4281dc8e81ca099e233d93d0a5f196f09ffc006b9adec">
         <input type="text" style="display:none;" name="actionType" value="Q29udGFjdHM=">
         <input type="hidden" name="rmsg" id="rmsg" value="true">
-        <input type="text" style="display:none;" name="returnURL" value="null">
         <input type="text" name="Last Name" id="codingexpoZohoLastName" maxlength="80" value="">
         <input type="text" name="Phone" id="codingexpoZohoPhone" maxlength="50" value="">
         <input type="text" name="Email" id="codingexpoZohoEmail" maxlength="100" value="">
         <textarea name="Description" id="codingexpoZohoDescription" maxlength="32000"></textarea>
     </form>
+    <!-- iframe kept for Zoho embed compatibility; submission uses fetch to avoid thank-you redirect -->
     <iframe id="hidden1225393000000539021Frame" name="hidden1225393000000539021Frame"
-        title="Zoho form submission" class="iframe-container" style="display:none;"></iframe>
+        title="Zoho form submission" class="iframe-container" style="display:none;" sandbox="allow-forms allow-scripts"></iframe>
 
     <div class="mobile-nav__wrapper">
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
@@ -1263,7 +1267,7 @@
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
             }
 
-            function submitLeadToZoho(visibleForm) {
+            function submitLeadToZoho(visibleForm, onComplete) {
                 if (!zohoForm || !zohoLastName || !zohoPhone || !zohoEmail || !zohoDescription) {
                     return false;
                 }
@@ -1294,9 +1298,21 @@
                     "Technology: " + technology + "\n" +
                     "Budget: " + budget;
 
-                zohoForm.action = ZOHO_FORM_ACTION;
-                document.charset = "UTF-8";
-                zohoForm.submit();
+                var payload = new FormData(zohoForm);
+
+                fetch(ZOHO_FORM_ACTION, {
+                    method: "POST",
+                    body: payload,
+                    mode: "no-cors",
+                    credentials: "omit"
+                }).catch(function () {
+                    /* no-cors hides errors; lead may still reach Zoho */
+                }).finally(function () {
+                    if (typeof onComplete === "function") {
+                        onComplete();
+                    }
+                });
+
                 return true;
             }
 
@@ -1311,20 +1327,19 @@
 
                     resetFormFeedback(form);
 
-                    if (!submitLeadToZoho(form)) {
+                    if (!submitLeadToZoho(form, function () {
+                        showFormFeedback(form, thankYouMessage);
+                        form.reset();
+
+                        if (popup && form.closest("#codingexpoEnquiryPopup")) {
+                            window.setTimeout(function () {
+                                popup.classList.remove("is-open");
+                                popup.setAttribute("aria-hidden", "true");
+                                resetFormFeedback(form);
+                            }, 2500);
+                        }
+                    })) {
                         window.alert("Unable to submit your enquiry right now. Please call us or email sales@codingexpo.org.");
-                        return;
-                    }
-
-                    showFormFeedback(form, thankYouMessage);
-                    form.reset();
-
-                    if (popup && form.closest("#codingexpoEnquiryPopup")) {
-                        window.setTimeout(function () {
-                            popup.classList.remove("is-open");
-                            popup.setAttribute("aria-hidden", "true");
-                            resetFormFeedback(form);
-                        }, 2500);
                     }
                 });
             });
