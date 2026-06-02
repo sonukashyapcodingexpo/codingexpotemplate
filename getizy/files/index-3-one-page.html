@@ -5,12 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/getizy/files/">
-    <link rel="canonical" href="https://website.codingexpo.org/index.html">
+    <link rel="canonical" href="https://website.codingexpo.org/">
     <script>
         (function () {
-            var cleanPath = "/index.html";
-            if (window.location.pathname !== cleanPath) {
-                window.history.replaceState(null, document.title, cleanPath);
+            var cleanPath = "/";
+            var path = window.location.pathname.replace(/\/+$/, "") || "/";
+            var dirty =
+                path === "/getizy/files/index-3-one-page.html" ||
+                path === "/index.html" ||
+                path.endsWith("/index-3-one-page.html");
+            if (dirty) {
+                window.history.replaceState(
+                    null,
+                    document.title,
+                    cleanPath + window.location.search + window.location.hash
+                );
             }
         })();
     </script>
@@ -110,7 +119,7 @@
             <div class="main-header__container-fluid container-fluid">
                 <div class="main-header__inner">
                     <div class="main-header__logo">
-                        <a href="/index.html" aria-label="Coding Expo Technology — Home">
+                        <a href="/" aria-label="Coding Expo Technology — Home">
                             <img src="assets/codingexpotemplate/codingexpo-logo.png" alt="Coding Expo Technology"
                                 class="codingexpo-logo codingexpo-logo--header" width="240" height="64" decoding="async">
                         </a>
@@ -1099,7 +1108,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="/index.html" aria-label="Coding Expo Technology — Home">
+                <a href="/" aria-label="Coding Expo Technology — Home">
                     <img src="assets/codingexpotemplate/codingexpo-logo.png" alt="Coding Expo Technology"
                         class="codingexpo-logo codingexpo-logo--mobile" width="240" height="64" decoding="async"></a>
             </div>

@@ -1,8 +1,12 @@
-# Apache: serve the one-page site at / and /index.html (clean URL, assets stay under getizy/files/)
+# Clean URL: https://website.codingexpo.org/ (assets stay under getizy/files/)
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
+  # Redirect old long URL and /index.html to site root
+  RewriteRule ^getizy/files/index-3-one-page\.html$ / [R=301,L]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # Serve homepage at /
   RewriteRule ^$ getizy/files/index-3-one-page.html [L]
-  RewriteRule ^index\.html$ getizy/files/index-3-one-page.html [L]
 </IfModule>
