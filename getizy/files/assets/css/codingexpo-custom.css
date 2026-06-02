@@ -1369,15 +1369,19 @@ body {
 }
 
 .codingexpo-enquiry-inline__inner {
-  width: 80vw;
-  max-width: 1120px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
 /* Inline enquiry form (above footer): scale up ~1.5x */
 .codingexpo-enquiry-inline .codingexpo-hero-form--popup {
   padding: 38px !important;
   border-radius: 22px;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__title {
@@ -1387,7 +1391,21 @@ body {
 }
 
 .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+}
+
+@media (max-width: 991px) {
+  .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .codingexpo-enquiry-inline .codingexpo-hero-form--popup .codingexpo-hero-form__grid input,
@@ -1486,7 +1504,8 @@ body {
   }
 
   .codingexpo-enquiry-inline__inner {
-    width: 80vw;
+    width: 100%;
+    max-width: 100%;
   }
 
   .codingexpo-enquiry-inline .codingexpo-hero-form--popup {

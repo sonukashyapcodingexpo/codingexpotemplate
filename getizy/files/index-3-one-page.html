@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="/getizy/files/">
-    <link rel="canonical" href="https://website.codingexpo.org/">
+    <base id="codingexpo-base" href="./">
     <script>
         (function () {
+            var baseEl = document.getElementById("codingexpo-base");
+            var isLocalFile = window.location.protocol === "file:";
+            if (baseEl) {
+                baseEl.href = isLocalFile ? "./" : "/getizy/files/";
+            }
+            if (isLocalFile) {
+                return;
+            }
             var cleanPath = "/";
             var path = window.location.pathname.replace(/\/+$/, "") || "/";
             var dirty =
@@ -23,6 +30,7 @@
             }
         })();
     </script>
+    <link rel="canonical" href="https://website.codingexpo.org/">
     <title>Coding Expo || Home 3 — One Page IT Services</title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
@@ -181,6 +189,7 @@
 		"items": 1,
 		"autoplay": true,
 		"autoplayTimeout": 7000,
+		"autoplayHoverPause": true,
 		"smartSpeed": 1000,
 		"nav": false,
 		"dots": false,
@@ -526,10 +535,10 @@
                         <i class="fa fa-envelope"></i>
                         <span>navneet.sharma@codingexpo.org</span>
                     </a>
-                    <a class="codingexpo-contact-strip__item" href="https://wa.me/919810523316" target="_blank"
-                        rel="noopener noreferrer" aria-label="WhatsApp +91 98105 23316">
+                    <a class="codingexpo-contact-strip__item" href="https://wa.me/919643054453" target="_blank"
+                        rel="noopener noreferrer" aria-label="WhatsApp +91 96430 54453">
                         <i class="fa-brands fa-whatsapp"></i>
-                        <span>WhatsApp: +91 98105 23316</span>
+                        <span>WhatsApp: +91 96430 54453</span>
                     </a>
                 </div>
             </div>
@@ -1041,8 +1050,8 @@
                         aria-label="Email navneet.sharma@codingexpo.org">
                         <img src="assets/codingexpotemplate/icon-gmail.png" alt="Email" loading="lazy" decoding="async">
                     </a>
-                    <a href="https://wa.me/919810523316" class="social-icon" target="_blank" rel="noopener noreferrer"
-                        aria-label="WhatsApp +91 98105 23316">
+                    <a href="https://wa.me/919643054453" class="social-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp +91 96430 54453">
                         <img src="assets/codingexpotemplate/icon-whatsapp.png" alt="WhatsApp" loading="lazy" decoding="async">
                     </a>
                 </div>
@@ -1207,7 +1216,9 @@
             var zohoPhone = document.getElementById("codingexpoZohoPhone");
             var zohoEmail = document.getElementById("codingexpoZohoEmail");
             var zohoDescription = document.getElementById("codingexpoZohoDescription");
-            var THANKYOU_URL = "/thankyou";
+            var THANKYOU_URL = window.location.protocol === "file:" ? "thankyou.html" : "/thankyou";
+            var heroCarousel = document.querySelector(".hero-slider-three__carousel");
+            var isFormActive = false;
 
             if (zohoForm) {
                 zohoForm.action = ZOHO_FORM_ACTION;
@@ -1231,6 +1242,31 @@
                     if (el.value !== digits) {
                         el.value = digits;
                     }
+                });
+            });
+
+            // Keep hero animation, but never while filling form
+            function stopHeroAutoplay() {
+                if (!heroCarousel || !window.jQuery) return;
+                window.jQuery(heroCarousel).trigger("stop.owl.autoplay");
+            }
+
+            function startHeroAutoplay() {
+                if (!heroCarousel || !window.jQuery) return;
+                window.jQuery(heroCarousel).trigger("play.owl.autoplay", [7000]);
+            }
+
+            document.querySelectorAll(".codingexpo-hero-form").forEach(function (form) {
+                form.addEventListener("focusin", function () {
+                    isFormActive = true;
+                    stopHeroAutoplay();
+                });
+                form.addEventListener("focusout", function () {
+                    window.setTimeout(function () {
+                        if (form.contains(document.activeElement)) return;
+                        isFormActive = false;
+                        startHeroAutoplay();
+                    }, 300);
                 });
             });
 
