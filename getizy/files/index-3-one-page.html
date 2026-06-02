@@ -1207,7 +1207,7 @@
             var zohoPhone = document.getElementById("codingexpoZohoPhone");
             var zohoEmail = document.getElementById("codingexpoZohoEmail");
             var zohoDescription = document.getElementById("codingexpoZohoDescription");
-            var thankYouMessage = "Thank you! We received your enquiry and will contact you shortly.";
+            var THANKYOU_URL = "/thankyou";
 
             if (zohoForm) {
                 zohoForm.action = ZOHO_FORM_ACTION;
@@ -1328,16 +1328,7 @@
                     resetFormFeedback(form);
 
                     if (!submitLeadToZoho(form, function () {
-                        showFormFeedback(form, thankYouMessage);
-                        form.reset();
-
-                        if (popup && form.closest("#codingexpoEnquiryPopup")) {
-                            window.setTimeout(function () {
-                                popup.classList.remove("is-open");
-                                popup.setAttribute("aria-hidden", "true");
-                                resetFormFeedback(form);
-                            }, 2500);
-                        }
+                        window.location.href = THANKYOU_URL;
                     })) {
                         window.alert("Unable to submit your enquiry right now. Please call us or email sales@codingexpo.org.");
                     }

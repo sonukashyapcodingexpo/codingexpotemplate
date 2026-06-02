@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/getizy/files/">
+    <link rel="canonical" href="https://website.codingexpo.org/thankyou">
+    <title>Thank You | Coding Expo</title>
+    <meta name="description" content="Thank you for contacting Coding Expo. Our team will reach out to you shortly." />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/codingexpo-custom.css" />
+    <style>
+        body.codingexpo-thankyou-page {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(165deg, #0f4c81 0%, #11111a 55%, #1a1a2e 100%);
+            color: #fff;
+        }
+
+        .codingexpo-thankyou-header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .codingexpo-thankyou-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .codingexpo-thankyou-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 48px 16px 64px;
+        }
+
+        .codingexpo-thankyou-card {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 48px 32px;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+        }
+
+        .codingexpo-thankyou-icon {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: rgba(255, 145, 77, 0.15);
+            border: 2px solid #ff914d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #ff914d;
+        }
+
+        .codingexpo-thankyou-card h1 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .codingexpo-thankyou-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .codingexpo-thankyou-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .codingexpo-thankyou-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .codingexpo-thankyou-btn--primary {
+            background: linear-gradient(135deg, #ff914d, #ff6b35);
+            color: #fff;
+            border: none;
+        }
+
+        .codingexpo-thankyou-btn--outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .codingexpo-thankyou-btn:hover {
+            transform: translateY(-2px);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.25);
+        }
+
+        .codingexpo-thankyou-contact {
+            margin-top: 28px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .codingexpo-thankyou-contact a {
+            color: #ff914d;
+            text-decoration: none;
+        }
+
+        .codingexpo-thankyou-contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="codingexpo-thankyou-page">
+    <header class="codingexpo-thankyou-header">
+        <div class="container">
+            <a href="/" aria-label="Coding Expo — Home">
+                <img src="assets/codingexpotemplate/codingexpo-logo.png" alt="Coding Expo" class="codingexpo-logo codingexpo-logo--header"
+                    width="240" height="64" decoding="async">
+            </a>
+            <a href="/" class="codingexpo-thankyou-btn codingexpo-thankyou-btn--outline">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="codingexpo-thankyou-main">
+        <div class="container">
+            <div class="codingexpo-thankyou-card">
+                <div class="codingexpo-thankyou-icon" aria-hidden="true">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h1>Thank You!</h1>
+                <p>We received your enquiry successfully. Our team will review your details and contact you shortly.</p>
+                <div class="codingexpo-thankyou-actions">
+                    <a href="/" class="codingexpo-thankyou-btn codingexpo-thankyou-btn--primary">
+                        <i class="fa-solid fa-house"></i> Return to Homepage
+                    </a>
+                    <a href="https://wa.me/919810523316?text=Hi%20Coding%20Expo,%20I%20just%20submitted%20an%20enquiry."
+                        target="_blank" rel="noopener noreferrer" class="codingexpo-thankyou-btn codingexpo-thankyou-btn--outline">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+                <p class="codingexpo-thankyou-contact mb-0">
+                    Need help now? Call <a href="tel:+919810523316">+91 98105 23316</a> or email
+                    <a href="mailto:sales@codingexpo.org">sales@codingexpo.org</a>
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

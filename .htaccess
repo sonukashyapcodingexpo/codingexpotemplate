@@ -7,6 +7,9 @@
   RewriteRule ^getizy/files/index-3-one-page\.html$ / [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
+  # Thank-you page after form submit
+  RewriteRule ^thankyou/?$ getizy/files/thankyou.html [L]
+
   # Serve homepage at /
   RewriteRule ^$ getizy/files/index-3-one-page.html [L]
 </IfModule>
